@@ -2,6 +2,16 @@
 
 <template>
   <div>
+    <header>
+      <nav>
+        <ul>
+          <li><NuxtLink to="/">Home</NuxtLink></li>
+          <li><NuxtLink to="/about">About</NuxtLink></li>
+          <li><NuxtLink to="/products">Products</NuxtLink></li>
+        </ul>
+      </nav>
+    </header>
+
     <h2>Home page</h2>
     <p>
       Fusce fermentum odio nec arcu. Pellentesque egestas, neque sit amet
