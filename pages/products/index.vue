@@ -2,21 +2,21 @@
 definePageMeta({
   layout: 'products',
 });
+
+// fetch products
+const { data: products } = await useFetch<IProduct[] | null>(
+  'https://fakestoreapi.com/products'
+);
 </script>
 
 <template>
   <div>
     <h2>Products</h2>
-    <p>
-      Fusce fermentum odio nec arcu. Pellentesque egestas, neque sit amet
-      convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non
-      est.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipiscing elit ultrices platea
-      tincidunt suspendisse, eros penatibus nunc ante vulputate diam orci
-      fermentum taciti arcu. Eros mauris mus conubia nascetur faucibu
-    </p>
+    <div v-if="products" class="grid grid-cols-4 gap-5">
+      <div v-for="p in products" :key="p.id">
+        <NuxtLink :to="`/products/${p.id}`">{{ p.title }}</NuxtLink>
+      </div>
+    </div>
   </div>
 </template>
 

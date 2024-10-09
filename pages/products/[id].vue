@@ -3,28 +3,26 @@ definePageMeta({
   layout: 'products',
 });
 
-const { id } = useRoute().params;
+const { id } = await useRoute().params;
+const uri = 'https://fakestoreapi.com/products/' + id;
+
+// fetch the product with id
+const { data: product, error } = await useFetch<IProduct | null>(uri, {
+  pick: ['id', 'title', 'price', 'image', 'category', 'description'],
+  lazy: true,
+  key: 'id',
+});
 </script>
 
 <template>
-  <div>
-    <h2>Specific page for product {{ id }}</h2>
-    <p>
-      Fusce fermentum odio nec arcu. Pellentesque egestas, neque sit amet
-      convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non
-      est.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipiscing elit ultrices platea
-      tincidunt suspendisse, eros penatibus nunc ante vulputate diam orci
-      fermentum taciti arcu. Eros mauris mus conubia nascetur faucibu
-    </p>
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate libero
-      laudantium quidem dolor repudiandae quaerat rem doloribus illum temporibus
-      ipsam, omnis aspernatur commodi assumenda nesciunt culpa praesentium quasi
-      architecto vitae.
-    </p>
+  <div v-if="product">
+    <h2>Specific page for product "{{ product.title }}"</h2>
+    <p>{{ product.title }}</p>
+    <p>{{ product.price }}</p>
+    <p>{{ product.id }}</p>
+    <p>{{ product.category }}</p>
+    <p>{{ product.description }}</p>
+    <img :src="`${product.image}`" alt="" />
   </div>
 </template>
 
