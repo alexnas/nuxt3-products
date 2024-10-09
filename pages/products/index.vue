@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import ProductCard from '~/components/ProductCard.vue';
+
 definePageMeta({
   layout: 'products',
 });
@@ -11,10 +13,9 @@ const { data: products } = await useFetch<IProduct[] | null>(
 
 <template>
   <div>
-    <h2>Products</h2>
     <div v-if="products" class="grid grid-cols-4 gap-5">
-      <div v-for="p in products" :key="p.id">
-        <NuxtLink :to="`/products/${p.id}`">{{ p.title }}</NuxtLink>
+      <div v-for="product in products" :key="product.id">
+        <ProductCard :product="product" />
       </div>
     </div>
   </div>
