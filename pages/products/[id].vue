@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import ProductDetails from '~/components/ProductDetails.vue';
+
 definePageMeta({
   layout: 'products',
 });
@@ -16,13 +18,7 @@ const { data: product, error } = await useFetch<IProduct | null>(uri, {
 
 <template>
   <div v-if="product">
-    <h2>Specific page for product "{{ product.title }}"</h2>
-    <p>{{ product.title }}</p>
-    <p>{{ product.price }}</p>
-    <p>{{ product.id }}</p>
-    <p>{{ product.category }}</p>
-    <p>{{ product.description }}</p>
-    <img :src="`${product.image}`" alt="" />
+    <ProductDetails :product="product" />
   </div>
 </template>
 
