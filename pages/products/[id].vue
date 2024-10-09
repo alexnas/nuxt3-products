@@ -10,10 +10,16 @@ const uri = 'https://fakestoreapi.com/products/' + id;
 
 // fetch the product with id
 const { data: product, error } = await useFetch<IProduct | null>(uri, {
-  pick: ['id', 'title', 'price', 'image', 'category', 'description'],
-  lazy: true,
   key: 'id',
 });
+
+if (!product.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Product not found',
+    fatal: true,
+  });
+}
 </script>
 
 <template>
