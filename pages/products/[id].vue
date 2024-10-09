@@ -23,8 +23,15 @@ if (!product.value) {
 </script>
 
 <template>
-  <div v-if="product">
-    <ProductDetails :product="product" />
+  <div>
+    <Head>
+      <Title>Nuxt3 Products | {{ product?.title }}</Title>
+      <Meta name="description" :content="product?.description" />
+    </Head>
+
+    <div v-if="product">
+      <ProductDetails :product="product" />
+    </div>
   </div>
 </template>
 
