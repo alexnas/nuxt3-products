@@ -9,4 +9,18 @@ declare global {
     description: string;
     image: string;
   }
+
+  interface ICurrency {
+    code: string;
+    value: number;
+  }
+
+  interface ICurrencies {
+    [key: string]: ICurrency;
+  }
+
+  interface IAboutSummary {
+    message: string;
+    currencies: ICurrencies;
+  }
 }
