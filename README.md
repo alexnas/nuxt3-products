@@ -1,6 +1,21 @@
-# Nuxt 3 Minimal Starter
+# Nuxt 3 Products
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+I wrote Nuxt 3 Products app to experiment manually with main functionality of MUXT 3. It operates with layoutes, specific separate Nuxt routing Routing for client and server, fetching data from client and from server, manipulations with Meta-data, 404 Error handling etc.
+TailwindCss was used for page styling.
+Use Typescript to check data types.
+The application gets dummy data from online resources.
+
+## Demo
+
+You can see [live demo of this app](https://nuxt3-products.netlify.app).
+
+## Used technologies
+
+- Nuxt 3
+- Vue 3
+- Vue Router
+- Typescript
+- TailwindCss
 
 ## Setup
 
@@ -71,5 +86,3 @@ yarn preview
 # bun
 bun run preview
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
